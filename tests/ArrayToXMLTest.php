@@ -100,6 +100,7 @@ final class ArrayToXMLTest extends TestCase
         DOCUMENT;
         $this->assertEquals($expected, $xml);
     }
+
     public function testCanNameChildrenExplicitly(): void
     {
         $xml = ArrayToXML::toXML([
@@ -125,6 +126,9 @@ final class ArrayToXMLTest extends TestCase
 
     public function testCanNameChildrenUsingMapper(): void
     {
+        $mapper = function ($name, $index, $value) {
+                return $name . $value['id'];
+        };
         $xml = ArrayToXML::toXML(
             [
                 'root' => [
@@ -134,11 +138,7 @@ final class ArrayToXMLTest extends TestCase
                 ]
             ],
             [
-                'name_mappers' => [
-                    'element' => function ($name, $index, $value) {
-                        return $name . $value['id'];
-                    }
-                ]
+                'name_mappers' => [ 'element' => $mapper ]
             ]
         );
         $expected = <<<DOCUMENT
