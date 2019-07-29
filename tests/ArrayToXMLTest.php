@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 use ArrayToXML\ArrayToXML;
+use ArrayToXML\InvalidNameException;
 use PHPUnit\Framework\TestCase;
 
 final class ArrayToXMLTest extends TestCase
@@ -218,5 +219,35 @@ final class ArrayToXMLTest extends TestCase
 
         DOCUMENT;
         $this->assertEquals($expected, $xml);
+    }
+
+    public function testInvalidName(): void
+    {
+        try {
+            $xml = ArrayToXML::toXML([
+                '>root' => null
+            ]);
+            $this->expectException(InvalidNameException::class);
+        } catch (InvalidNameException $e) {
+            $this->assertEquals('>root', $e->getName());
+        }
+
+        try {
+            $xml = ArrayToXML::toXML([
+                'root@' => null
+            ]);
+            $this->expectException(InvalidNameException::class);
+        } catch (InvalidNameException $e) {
+            $this->assertEquals('', $e->getName());
+        }
+
+        try {
+            $xml = ArrayToXML::toXML([
+                'root@>' => null
+            ]);
+            $this->expectException(InvalidNameException::class);
+        } catch (InvalidNameException $e) {
+            $this->assertEquals('>', $e->getName());
+        }
     }
 }

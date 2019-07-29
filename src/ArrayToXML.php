@@ -5,6 +5,7 @@ namespace ArrayToXML;
 use DOMNode;
 use Exception;
 use DOMDocument;
+use DOMException;
 
 class ArrayToXML
 {
@@ -132,25 +133,33 @@ class ArrayToXML
      * @param string $key
      * @param [type] $value
      * @return DOMNode
+     * @throws InvalidNameException
      */
     protected function createElement(string $key, $value = null): DOMNode
     {
         list($name, $attrs) = $this->extractAttributes($key);
-        if (is_string($value) && strpos($value, 'cdata:') === 0) {
-            $value = substr($value, strlen('cdata:'));
-            $element = $this->dom->createElement($name);
-            $element->appendChild(
-                $this->dom->createCDATASection($value)
-            );
-        } else {
-            $element = $this->dom->createElement($name, $value);
-        }
-        if ($attrs) {
-            foreach ($attrs as $key => $value) {
-                $element->setAttribute($key, $value);
+        try {
+            if (is_string($value) && strpos($value, 'cdata:') === 0) {
+                $value = substr($value, strlen('cdata:'));
+                $element = $this->dom->createElement($name);
+                $element->appendChild(
+                    $this->dom->createCDATASection($value)
+                );
+            } else {
+                $element = $this->dom->createElement($name, $value);
             }
+            if ($attrs) {
+                foreach ($attrs as $key => $value) {
+                    if (empty($key)) {
+                        throw new InvalidNameException('Invalid attribute name', $key);
+                    }
+                    $element->setAttribute($key, $value);
+                }
+            }
+            return $element;
+        } catch (DOMException $e) {
+            throw new InvalidNameException('Invalid name: ' . $e->getMessage(), $key, $e);
         }
-        return $element;
     }
 
     /**
