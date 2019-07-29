@@ -297,3 +297,24 @@ Yields:
   </Lines>
 </Order>
 ```
+
+- Conveniently create CDATA
+
+```php
+ArrayToXML::toXML(
+    'Order@version=2.0' => [
+        'ID' => 1234,
+        'Comment' => 'cdata:foo',
+    ]
+);
+```
+
+Yields:
+
+```xml
+<?xml version="1.0"?>
+<Order>
+  <ID>1234</ID>
+  <Comment><![CDATA[foo]]></Comment>
+</Order>
+```
