@@ -11,10 +11,10 @@ final class ArrayToXMLTest extends TestCase
     {
         $xml = ArrayToXML::toXML(['root' => null]);
         $expected = <<<DOCUMENT
-        <?xml version="1.0"?>
-        <root/>
+<?xml version="1.0"?>
+<root/>
 
-        DOCUMENT;
+DOCUMENT;
         $this->assertEquals($expected, $xml);
     }
 
@@ -25,10 +25,10 @@ final class ArrayToXMLTest extends TestCase
             ['version' => '1.2']
         );
         $expected = <<<DOCUMENT
-        <?xml version="1.2"?>
-        <root/>
+<?xml version="1.2"?>
+<root/>
 
-        DOCUMENT;
+DOCUMENT;
         $this->assertEquals($expected, $xml);
     }
 
@@ -39,10 +39,10 @@ final class ArrayToXMLTest extends TestCase
             ['version' => '1.2', 'encoding' => 'utf8']
         );
         $expected = <<<DOCUMENT
-        <?xml version="1.2" encoding="utf8"?>
-        <root/>
+<?xml version="1.2" encoding="utf8"?>
+<root/>
 
-        DOCUMENT;
+DOCUMENT;
         $this->assertEquals($expected, $xml);
     }
 
@@ -53,8 +53,8 @@ final class ArrayToXMLTest extends TestCase
             ['declare' => false]
         );
         $expected = <<<DOCUMENT
-        <root/>
-        DOCUMENT;
+<root/>
+DOCUMENT;
         $this->assertEquals($expected, $xml);
     }
 
@@ -68,16 +68,16 @@ final class ArrayToXMLTest extends TestCase
             ]
         ]);
         $expected = <<<DOCUMENT
-        <?xml version="1.0"?>
-        <root>
-          <elements>
-            <element>
-              <id>1</id>
-            </element>
-          </elements>
-        </root>
+<?xml version="1.0"?>
+<root>
+  <elements>
+    <element>
+      <id>1</id>
+    </element>
+  </elements>
+</root>
 
-        DOCUMENT;
+DOCUMENT;
         $this->assertEquals($expected, $xml);
     }
 
@@ -89,15 +89,15 @@ final class ArrayToXMLTest extends TestCase
             ]
         ]);
         $expected = <<<DOCUMENT
-        <?xml version="1.0"?>
-        <root>
-          <element>
-            <id>1</id>
-            <foo><![CDATA[bar]]></foo>
-          </element>
-        </root>
+<?xml version="1.0"?>
+<root>
+  <element>
+    <id>1</id>
+    <foo><![CDATA[bar]]></foo>
+  </element>
+</root>
 
-        DOCUMENT;
+DOCUMENT;
         $this->assertEquals($expected, $xml);
     }
 
@@ -111,16 +111,16 @@ final class ArrayToXMLTest extends TestCase
             ]
         ]);
         $expected = <<<DOCUMENT
-        <?xml version="1.0"?>
-        <root>
-          <elements>
-            <thing>
-              <id>1</id>
-            </thing>
-          </elements>
-        </root>
+<?xml version="1.0"?>
+<root>
+  <elements>
+    <thing>
+      <id>1</id>
+    </thing>
+  </elements>
+</root>
 
-        DOCUMENT;
+DOCUMENT;
         $this->assertEquals($expected, $xml);
     }
 
@@ -142,16 +142,16 @@ final class ArrayToXMLTest extends TestCase
             ]
         );
         $expected = <<<DOCUMENT
-        <?xml version="1.0"?>
-        <root>
-          <elements>
-            <elementOne>
-              <id>One</id>
-            </elementOne>
-          </elements>
-        </root>
+<?xml version="1.0"?>
+<root>
+  <elements>
+    <elementOne>
+      <id>One</id>
+    </elementOne>
+  </elements>
+</root>
 
-        DOCUMENT;
+DOCUMENT;
         $this->assertEquals($expected, $xml);
     }
 
@@ -180,19 +180,19 @@ final class ArrayToXMLTest extends TestCase
             ]
         );
         $expected = <<<DOCUMENT
-        <?xml version="1.0"?>
-        <root>
-          <elementOne>
-            <id>One</id>
-          </elementOne>
-          <LineComment>Drive safely</LineComment>
-          <elementTwo>
-            <id>Two</id>
-          </elementTwo>
-          <LineComment>Add extra flugel</LineComment>
-        </root>
+<?xml version="1.0"?>
+<root>
+  <elementOne>
+    <id>One</id>
+  </elementOne>
+  <LineComment>Drive safely</LineComment>
+  <elementTwo>
+    <id>Two</id>
+  </elementTwo>
+  <LineComment>Add extra flugel</LineComment>
+</root>
 
-        DOCUMENT;
+DOCUMENT;
         $this->assertEquals($expected, $xml);
     }
 
@@ -207,17 +207,17 @@ final class ArrayToXMLTest extends TestCase
             ]
         ]);
         $expected = <<<DOCUMENT
-        <?xml version="1.0"?>
-        <root>
-          <thing>
-            <id>1</id>
-          </thing>
-          <thing>
-            <id>2</id>
-          </thing>
-        </root>
+<?xml version="1.0"?>
+<root>
+  <thing>
+    <id>1</id>
+  </thing>
+  <thing>
+    <id>2</id>
+  </thing>
+</root>
 
-        DOCUMENT;
+DOCUMENT;
         $this->assertEquals($expected, $xml);
     }
 
