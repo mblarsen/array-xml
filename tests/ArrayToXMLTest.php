@@ -127,7 +127,7 @@ final class ArrayToXMLTest extends TestCase
     public function testCanNameChildrenUsingMapper(): void
     {
         $mapper = function ($name, $index, $value) {
-                return $name . $value['id'];
+            return $name . $value['id'];
         };
         $xml = ArrayToXML::toXML(
             [
