@@ -126,9 +126,6 @@ DOCUMENT;
 
     public function testCanNameChildrenUsingMapper(): void
     {
-        $mapper = function ($name, $index, $value) {
-            return $name . $value['id'];
-        };
         $xml = ArrayToXML::toXML(
             [
                 'root' => [
@@ -138,7 +135,11 @@ DOCUMENT;
                 ]
             ],
             [
-                'name_mappers' => [ 'element' => $mapper ]
+                'name_mappers' => [
+                    'element' => function ($name, $index, $value) {
+                        return $name . $value['id'];
+                    }
+                ]
             ]
         );
         $expected = <<<DOCUMENT
