@@ -1,5 +1,8 @@
 # array-xml
 
+
+[![Build status](http://img.shields.io/travis/mblarsen/array-xml.svg)](http://travis-ci.org/mblarsen/array-xml)
+
 > Because DOMDocument and SimpleXML sucks
 
 - Easily build XML with associative arrays
