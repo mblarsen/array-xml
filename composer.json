@@ -1,0 +1,25 @@
+{
+  "name": "mblarsen/array-xml",
+  "description": "A simple array syntax for building XML files",
+  "type": "xml, array, helper, soap, dom, simplexml",
+  "license": "MIT",
+  "version": "0.1.0",
+  "minimum-stability": "dev",
+  "authors": [
+    {
+      "name": "Michael Bøcker-Larsen",
+      "email": "m19n@pm.me"
+    }
+  ],
+  "require": {
+    "php": ">=7.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8"
+  },
+  "autoload": {
+    "psr-4": {
+      "ArrayToXML\\": "src"
+    }
+  }
+}
