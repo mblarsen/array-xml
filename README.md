@@ -119,7 +119,7 @@ Yields:
 </Order>
 ```
 
-- "Flatten" the parent element and put it's children in its place using `<`.
+- "Flatten" the parent element and put its children in its place using `<`.
 
 ```php
 ArrayToXML::toXML(
