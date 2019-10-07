@@ -139,11 +139,11 @@ Yields:
 <?xml version="1.0"?>
 <Order>
   <ID>1234</ID>
-  <Line number="1">
+  <Line>
     <item>ABC</item>
     <qty>3</qty>
   </Line>
-  <Line number="2">
+  <Line>
     <item>DEF</item>
     <qty>1</qty>
   </Line>
