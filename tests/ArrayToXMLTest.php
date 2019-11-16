@@ -222,6 +222,56 @@ DOCUMENT;
         $this->assertEquals($expected, $xml);
     }
 
+    public function testCanFlattenParentPlural(): void
+    {
+        $xml = ArrayToXML::toXML([
+            'root' => [
+                '<things' => [
+                    ['id' => 1],
+                    ['id' => 2]
+                ]
+            ]
+        ]);
+        $expected = <<<DOCUMENT
+<?xml version="1.0"?>
+<root>
+  <thing>
+    <id>1</id>
+  </thing>
+  <thing>
+    <id>2</id>
+  </thing>
+</root>
+
+DOCUMENT;
+        $this->assertEquals($expected, $xml);
+    }
+
+    public function testCanFlattenParentPluralWithChildName(): void
+    {
+        $xml = ArrayToXML::toXML([
+            'root' => [
+                '<things|things' => [
+                    ['id' => 1],
+                    ['id' => 2]
+                ]
+            ]
+        ]);
+        $expected = <<<DOCUMENT
+<?xml version="1.0"?>
+<root>
+  <things>
+    <id>1</id>
+  </things>
+  <things>
+    <id>2</id>
+  </things>
+</root>
+
+DOCUMENT;
+        $this->assertEquals($expected, $xml);
+    }
+
     public function testInvalidName(): void
     {
         try {
