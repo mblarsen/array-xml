@@ -275,7 +275,7 @@ DOCUMENT;
     public function testInvalidName(): void
     {
         try {
-            $xml = ArrayToXML::toXML([
+            ArrayToXML::toXML([
                 '>root' => null
             ]);
             $this->expectException(InvalidNameException::class);
@@ -284,7 +284,7 @@ DOCUMENT;
         }
 
         try {
-            $xml = ArrayToXML::toXML([
+            ArrayToXML::toXML([
                 'root@' => null
             ]);
             $this->expectException(InvalidNameException::class);
@@ -293,7 +293,7 @@ DOCUMENT;
         }
 
         try {
-            $xml = ArrayToXML::toXML([
+            ArrayToXML::toXML([
                 'root@>' => null
             ]);
             $this->expectException(InvalidNameException::class);
