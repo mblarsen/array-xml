@@ -1,7 +1,7 @@
 {
   "name": "mblarsen/array-xml",
   "description": "A simple yet expressive array syntax for building XML files",
-  "type": "xml, array, helper, soap, dom, simplexml",
+  "type": "library",
   "license": "MIT",
   "version": "0.1.0",
   "minimum-stability": "dev",
