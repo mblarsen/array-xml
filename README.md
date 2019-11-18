@@ -302,7 +302,7 @@ Yields:
 
 ```php
 ArrayToXML::toXML(
-    'Order@version=2.0' => [
+    'Order' => [
         'ID' => 1234,
         'Comment' => 'cdata:foo',
     ]
