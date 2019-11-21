@@ -125,10 +125,17 @@ Yields:
 ArrayToXML::toXML(
     'Order' => [
         'ID' => 1234,
+        // Node names will be 'Line'
         '<Lines' => [
             ['item' => 'ABC', 'qty' => 3],
             ['item' => 'DEF', 'qty' => 1],
-        ]
+        ],
+        // Node name will be 'Lines'
+        // (some XSDs actually pluralize 'things' 🤦)
+        '<Foo|Lines' => [
+            ['item' => 'ABC', 'qty' => 3],
+            ['item' => 'DEF', 'qty' => 1],
+        ],
     ],
 );
 ```
@@ -147,6 +154,14 @@ Yields:
     <item>DEF</item>
     <qty>1</qty>
   </Line>
+  <Lines>
+    <item>ABC</item>
+    <qty>3</qty>
+  </Lines>
+  <Lines>
+    <item>DEF</item>
+    <qty>1</qty>
+  </Lines>
 </Order>
 ```
 
